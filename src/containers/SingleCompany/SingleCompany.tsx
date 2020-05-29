@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { MDBTable, MDBTableHead } from 'mdbreact';
-import { Card } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 
 import { readCompany } from '../../actions/company';
 import { Company } from '../../types/company.interface';
 import { StoreObj } from '../../types/store.interface';
 import { Report } from '../../types/report.interface';
-import ReportItem  from  '../../components/Reports/ReportItem'
+import ReportItem  from  '../../components/ReportItem'
 
 interface SingleCompanyProps extends RouteComponentProps<OwnPropsParams> {
     company: Company;
@@ -42,9 +41,9 @@ class SingleCompany extends Component<SingleCompanyProps> {
                 <div className="ui card">
                     <div className="content">
                     <Card>
-                        <Card.Header as="h5"> <b><h1>Name: {company.name}</h1></b></Card.Header>
+                        <Card.Header as="h2"> <b><h1>Name: {company.name}</h1></b></Card.Header>
                         <Card.Body>
-                            <Card.Title>Special title treatment</Card.Title>
+                            <Card.Title as="h3">Special Title Treatment</Card.Title>
                             <Card.Text>
                             <b>Address:</b> {company.address}
                             </Card.Text>
@@ -61,28 +60,24 @@ class SingleCompany extends Component<SingleCompanyProps> {
                     </Card>
                     </div>
                 </div>
-                <div className="ui card">
-                    <div className="content">
-                        <Card>
-                            <Card.Header as="h5"> <b><h1>Reports</h1></b></Card.Header>
-                        </Card>
-                    </div>
+                <div className="reports-table">
+                    <h1>Reports</h1>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Period</th>
+                                <th>Year</th>
+                                <th>Assignee</th>
+                                <th>Deadline</th>
+                                <th>submitted</th>
+                                <th>URL</th>
+                            </tr>
+                        </thead>
+                        {this.renderReports()}
+                    </Table>
                 </div>
-                <MDBTable striped>
-                <MDBTableHead>
-                    <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Period</th>
-                    <th>Year</th>
-                    <th>Assignee</th>
-                    <th>Deadline</th>
-                    <th>submitted</th>
-                    <th>URL</th>
-                    </tr>
-                </MDBTableHead>
-                {this.renderReports()}
-                </MDBTable>
             </div>
         );
     }

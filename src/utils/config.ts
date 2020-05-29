@@ -14,5 +14,6 @@ switch (process.env.NODE_ENV) {
 }
 dotenv.config({ path: path });
 
-export const APP_ID = process.env.APP_ID;
+// console.log(process.env.API_URL, 'process.env.API_URL', path)
+export const API_URL = process.env.API_URL;
 export const LOG_LEVEL = process.env.LOG_LEVEL;

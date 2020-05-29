@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListGroup } from 'react-bootstrap';
-
-import CompanyListItemPage from '../../components/Companies/ListItem';
-import { getCompanies } from '../../actions/company';
+import { CardGroup } from 'react-bootstrap';
 import { Company } from '../../types/company.interface';
+import Alert from '../../components/Alert';
+import { getCompanies } from '../../actions/company';
+import CompanyListItemPage from '../../components/ListItem';
 import Loader from '../../components/Loader';
-import Alert from '../../components/Alert'
 import { StoreObj } from '../../types/store.interface';;
-
-
-
-
-
 
 export interface CompanyListProps {
     companies: Company[];
@@ -29,12 +23,15 @@ class CompanyList extends Component<CompanyListProps> {
         this.props.getCompanies();
     }
 
-    renderCompanies(): JSX.Element[] | null {
+    renderCompanies(): JSX.Element | null {
         const { companies, errorMessage, fetching } = this.props;
-        return companies.map((company: Company) => {
-            return <ListGroup.Item key={company._id}>
-                <CompanyListItemPage company={company}  fetching={fetching}  errorMessage={errorMessage} /></ListGroup.Item>;
-        });
+        return (
+            <CardGroup>
+                {companies.map((company: Company) => {
+                    return <CompanyListItemPage key={company._id} company={company}  fetching={fetching}  errorMessage={errorMessage} />
+                })}
+            </CardGroup>
+        );
     }
 
     render() {

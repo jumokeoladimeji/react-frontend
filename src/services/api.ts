@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Company } from '../types/company.interface';
 
-
 export default {
     async get(path: string) {
 		console.log(process.env)

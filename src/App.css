@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -26,6 +26,35 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+}
+
+.searchButton {
+  font-size: 1.4rem;
+  padding: 5px 15px;
+}
+
+.card {
+  margin: 20px;
+}
+
+body {
+  font-size: 14px;
+}
+
+.reports-table {
+  margin: 20px;
+}
+
+.reports-table h1 {
+  margin-bottom: 20px;
 }
 
 @keyframes App-logo-spin {
